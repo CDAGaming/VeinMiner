@@ -70,7 +70,7 @@ import java.util.Set;
  * through ForgeModLoader.
  */
 
-@Mod(modid = ModInfo.MODID, acceptedMinecraftVersions = "[1.12,1.13)",
+@Mod(modid = ModInfo.MODID, acceptedMinecraftVersions = "[1.12.2,1.13)",
         canBeDeactivated = true, guiFactory = "portablejim.veinminer.configuration.client.ConfigGuiFactory")
 public class VeinMiner {
 
@@ -200,9 +200,7 @@ public class VeinMiner {
                             for(ItemStack item : itemStacks) {
                                 if(item.getItem() instanceof ItemBlock) {
                                     String blockName = Item.REGISTRY.getNameForObject(item.getItem()).toString();
-                                    if(blockName != null) {
-                                        configurationSettings.addBlockToWhitelist(toolType, new BlockID(blockName, item.getItemDamage()));
-                                    }
+                                    configurationSettings.addBlockToWhitelist(toolType, new BlockID(blockName, item.getItemDamage()));
                                     try {
                                         // Some mods raise an exception when calling getDisplayName on blocks.
                                         MinerLogger.debug("Adding %s/%d (%s) to block whitelist for %s (%s:%s)", blockName, item.getItemDamage(), item.getDisplayName(), toolType, autodetectValue, oreDictEntry);
